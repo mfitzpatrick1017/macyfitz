@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — BeachSports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green:  #10b48a;
+      --orange: #f37730;
+      --gold:   #fbac2b;
+      --text:   #6e6060;
+      --dark:   #1a1208;
+      --off:    #f7f5f2;
+      --offb:   #ede9e4;
+      --white:  #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─────────────────────────────────────
+       SHARED UTILITIES
+    ───────────────────────────────────── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: .95;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+    .section-title em { font-style: italic; color: var(--green); }
+    .section-title .em-gold { font-style: italic; color: var(--gold); }
+    .section-title .em-orange { font-style: italic; color: var(--orange); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─────────────────────────────────────
+       HERO
+    ───────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 70vh;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-media { position: absolute; inset: 0; }
+    .hero-media img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(20,12,4,.1) 0%, rgba(20,12,4,.65) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; color: #fff;
+      padding: 0 24px;
+    }
+    .hero-badges {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp .8s .0s ease both;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-badge {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+    }
+    .hero-badge-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      flex-shrink: 0;
+    }
+    .hero-h1 {
+      font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: .9;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      animation: fadeUp .8s .1s ease both;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-tagline {
+      font-size: clamp(.95rem, 1.4vw, 1.15rem);
+      font-weight: 600;
+      line-height: 1.65;
+      color: rgba(255,255,255,.9);
+      max-width: 420px;
+      margin: 18px auto 0;
+      opacity: 0;
+      animation: fadeUp .8s .2s ease both;
+    }
+
+    /* ─────────────────────────────────────
+       ORIGIN STORY
+    ───────────────────────────────────── */
+    .origin-section {
+      padding: 100px 56px;
+      background: var(--white);
+    }
+    .origin-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .origin-img-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.14);
+    }
+    .origin-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      transition: transform .65s cubic-bezier(.22,.68,0,1.1);
+    }
+    .origin-img-wrap:hover img { transform: scale(1.04); }
+    .origin-img-badge {
+      position: absolute;
+      bottom: 24px; left: 24px;
+      background: var(--green);
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 50px;
+    }
+    .origin-text { display: flex; flex-direction: column; gap: 0; }
+    .origin-text .section-title { margin-bottom: 32px; }
+    .origin-p {
+      font-size: .97rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .origin-p:last-child { margin-bottom: 0; }
+    .year-tag {
+      display: inline-block;
+      font-weight: 800;
+      color: var(--dark);
+      background: var(--off);
+      border-left: 3px solid var(--green);
+      padding: 2px 10px;
+      border-radius: 0 6px 6px 0;
+      font-size: .88rem;
+    }
+
+    /* ─────────────────────────────────────
+       OWNERS SECTION
+    ───────────────────────────────────── */
+    .owners-section {
+      background: var(--off);
+      padding: 90px 56px;
+      overflow: hidden;
+    }
+    .owners-header {
+      max-width: 1400px;
+      margin: 0 auto 56px;
+    }
+    .owners-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .owner-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,.07);
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
+    }
+    .owner-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 52px rgba(0,0,0,.12);
+    }
+    .owner-card-top {
+      height: 4px;
+    }
+    .owner-card-top.green { background: var(--green); }
+    .owner-card-top.gold  { background: var(--gold); }
+    .owner-card-body { padding: 44px 48px 48px; }
+    .owner-name {
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .owner-role {
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+    .owner-bio {
+      font-size: .97rem;
+      line-height: 1.82;
+      color: var(--text);
+      margin-bottom: 22px;
+    }
+    .family-note {
+      background: rgba(16,180,138,.07);
+      border-left: 3px solid var(--green);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      font-size: .88rem;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+    .family-note strong { color: var(--dark); font-weight: 800; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--off);
+      border: 1px solid var(--offb);
+      color: var(--text);
+      padding: 5px 13px;
+      border-radius: 50px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    /* ─────────────────────────────────────
+       CAROUSEL (between owners header and card)
+    ───────────────────────────────────── */
+    .carousel-outer {
+      max-width: 1400px;
+      margin: 0 auto 56px;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,.1);
+    }
+    .carousel-track-outer { overflow: hidden; }
+    .carousel-track {
+      display: flex;
+      transition: transform .55s cubic-bezier(.4,0,.2,1);
+    }
+    .carousel-slide { min-width: 100%; position: relative; }
+    .carousel-slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(20,12,4,.6) 0%, transparent 100%);
+      padding: 60px 36px 24px;
+      color: rgba(255,255,255,.85);
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.88);
+      border: none;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      transition: background .2s, transform .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .carousel-btn:hover {
+      background: var(--green);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .carousel-btn:hover svg path { stroke: white; }
+    .carousel-btn svg path { stroke: #333; transition: stroke .2s; }
+    .carousel-btn.prev { left: 20px; }
+    .carousel-btn.next { right: 20px; }
+    .carousel-dots {
+      position: absolute;
+      bottom: 18px; right: 24px;
+      display: flex; gap: 7px;
+      z-index: 10;
+    }
+    .cdot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.4);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      border: none;
+    }
+    .cdot.active { background: var(--green); transform: scale(1.35); }
+
+    /* ─────────────────────────────────────
+       PROGRAM DIRECTOR (Jenn)
+    ───────────────────────────────────── */
+    .director-section {
+      padding: 90px 56px;
+      background: var(--white);
+    }
+    .director-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .director-header { margin-bottom: 48px; }
+    .director-featured {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 44px rgba(0,0,0,.09);
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
+    }
+    .director-featured:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(0,0,0,.14);
+    }
+    .dir-feat-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .dir-feat-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform .6s cubic-bezier(.22,.68,0,1.1);
+    }
+    .director-featured:hover .dir-feat-img img { transform: scale(1.05); }
+    .dir-feat-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--orange);
+    }
+    .dir-feat-body {
+      padding: 52px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--white);
+    }
+    .dir-name {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .dir-role {
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 24px;
+    }
+    .dir-bio {
+      font-size: .97rem;
+      line-height: 1.82;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .stat-box {
+      background: var(--off);
+      border-top: 3px solid var(--green);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .stat-label {
+      font-size: .6rem;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .stat-value {
+      font-size: .88rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -.3px;
+    }
+
+    /* ─────────────────────────────────────
+       SUPPORT TEAM (Lisa & Macy)
+    ───────────────────────────────────── */
+    .support-section {
+      background: var(--off);
+      padding: 90px 56px;
+    }
+    .support-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .support-header { margin-bottom: 48px; }
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .support-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,.07);
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
+    }
+    .support-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 52px rgba(0,0,0,.13);
+    }
+    .support-img-wrap {
+      position: relative;
+      height: 360px;
+      overflow: hidden;
+    }
+    .support-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform .55s cubic-bezier(.22,.68,0,1.1);
+    }
+    .support-card:hover .support-img-wrap img { transform: scale(1.05); }
+    .support-img-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .support-img-bar.gold   { background: var(--gold); }
+    .support-img-bar.orange { background: var(--orange); }
+    .support-body { padding: 36px 40px 42px; }
+    .support-name {
+      font-size: clamp(1.6rem, 2vw, 2.1rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .support-role {
+      font-size: .63rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 22px;
+    }
+    .support-bio {
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    /* ─────────────────────────────────────
+       LOCATION DIRECTORS
+    ───────────────────────────────────── */
+    .ldirectors-section {
+      background: var(--white);
+      padding: 90px 56px 100px;
+    }
+    .ldirectors-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .ldirectors-header { margin-bottom: 52px; }
+    .ldirectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ldir-card {
+      background: var(--white);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--offb);
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
+      opacity: 0;
+      animation: fadeUp .6s ease forwards;
+    }
+    .ldir-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 44px rgba(0,0,0,.12);
+    }
+    .ldir-card:nth-child(1) { animation-delay: .05s; }
+    .ldir-card:nth-child(2) { animation-delay: .10s; }
+    .ldir-card:nth-child(3) { animation-delay: .15s; }
+    .ldir-card:nth-child(4) { animation-delay: .20s; }
+    .ldir-card:nth-child(5) { animation-delay: .25s; }
+    .ldir-card:nth-child(6) { animation-delay: .30s; }
+    .ldir-card:nth-child(7) { animation-delay: .35s; }
+    .ldir-card:nth-child(8) { animation-delay: .40s; }
+    .ldir-card:nth-child(9) { animation-delay: .45s; }
+    .ldir-photo {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+    .ldir-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform .5s cubic-bezier(.22,.68,0,1.1);
+    }
+    .ldir-card:hover .ldir-photo img { transform: scale(1.06); }
+    .ldir-photo-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--green);
+    }
+    .ldir-location-badge {
+      position: absolute;
+      bottom: 16px; left: 16px;
+      background: rgba(26,18,8,.72);
+      backdrop-filter: blur(8px);
+      color: rgba(255,255,255,.92);
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .ldir-info { padding: 28px 30px 32px; }
+    .ldir-name {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .ldir-role {
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .ldir-divider {
+      width: 32px;
+      height: 2px;
+      background: var(--offb);
+      margin-bottom: 14px;
+    }
+    .ldir-snippet {
+      font-size: .9rem;
+      line-height: 1.72;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 7px; }
+    .pill {
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 50px;
+      border: 1px solid var(--offb);
+      color: var(--text);
+      background: var(--off);
+    }
+
+    /* ─────────────────────────────────────
+       FOOTER CTA BAND
+    ───────────────────────────────────── */
+    .cta-band {
+      background: var(--green);
+      padding: 64px 56px;
+      text-align: center;
+    }
+    .cta-band .section-label { color: rgba(255,255,255,.6); justify-content: center; }
+    .cta-band .section-label::before { background: rgba(255,255,255,.4); }
+    .cta-h2 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: .95;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 10px 0 28px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--gold); }
+    .cta-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #fff; color: var(--dark);
+      padding: 13px 30px; border-radius: 50px;
+      text-decoration: none;
+      font-size: .78rem; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all .3s;
+    }
+    .btn-primary:hover {
+      background: var(--dark); color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+    }
+    .btn-primary svg { transition: transform .3s; }
+    .btn-primary:hover svg { transform: translateX(4px); }
+    .btn-secondary-light {
+      border: 2px solid rgba(255,255,255,.55); color: #fff;
+      padding: 11px 28px; border-radius: 50px;
+      text-decoration: none;
+      font-size: .78rem; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      transition: all .3s;
+    }
+    .btn-secondary-light:hover {
+      background: rgba(255,255,255,.18);
+      border-color: #fff;
+    }
+
+    /* ─────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .origin-section,
+      .owners-section,
+      .director-section,
+      .support-section,
+      .ldirectors-section,
+      .cta-band { padding-left: 32px; padding-right: 32px; }
+      .director-featured { grid-template-columns: 340px 1fr; }
+    }
+    @media (max-width: 900px) {
+      .origin-inner { grid-template-columns: 1fr; gap: 40px; }
+      .origin-img-wrap img { height: 380px; }
+      .owners-grid { grid-template-columns: 1fr; }
+      .director-featured { grid-template-columns: 1fr; }
+      .dir-feat-img { height: 360px; }
+      .dir-feat-img img { position: relative; width: 100%; height: 360px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .support-grid { grid-template-columns: 1fr; }
+      .ldirectors-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .origin-section,
+      .owners-section,
+      .director-section,
+      .support-section,
+      .ldirectors-section,
+      .cta-band { padding-left: 20px; padding-right: 20px; }
+      .hero-h1 { letter-spacing: -2px; }
+      .carousel-slide img { height: 300px; }
+      .ldirectors-grid { grid-template-columns: 1fr; }
+      .dir-feat-body { padding: 32px 28px; }
+      .owner-card-body { padding: 32px 28px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports team on the beach">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badges">
+        <span class="hero-badge">South Bay</span>
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge">Family Owned</span>
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge">Since 1995</span>
+      </div>
+      <h1 class="hero-h1">
+        Meet<br>
+        The<br>
+        <em>Team.</em>
+      </h1>
+      <p class="hero-tagline">Family-owned and locally run in the South Bay.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ORIGIN STORY
+  ═══════════════════════════════════════ -->
+  <section class="origin-section">
+    <div class="origin-inner">
+      <div class="origin-img-wrap">
+        <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports Origins">
+        <span class="origin-img-badge">Est. 1995 · South Bay</span>
+      </div>
+      <div class="origin-text">
+        <div class="section-label">Origin Story</div>
+        <h2 class="section-title">Beginning<br>of <em>BeachSports</em></h2>
+        <div style="margin-bottom:32px;"></div>
+        <p class="origin-p">
+          <span class="year-tag">Founded in 1995</span> by LA County Lifeguards, BeachSports began as a youth beach and surf camp in the South Bay, created to give kids structured, safe education in ocean awareness and beach skills.
+        </p>
+        <p class="origin-p">
+          In <span class="year-tag">2010</span>, Tommy Ostendorf reprogrammed and evolved the camp, keeping its core mission intact while shaping the programs into what BeachSports is today — focused on confidence, safety, and a genuine love for the ocean.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       OWNERS
+  ═══════════════════════════════════════ -->
+  <section class="owners-section">
+    <div class="owners-header">
+      <div class="section-label">The Founders</div>
+      <h2 class="section-title">The <em>Ostendorfs</em></h2>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel-outer" style="margin-bottom: 48px;">
+      <div class="carousel-track-outer">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports on the water">
+            <div class="slide-caption">On the Water</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1400&h=700&fit=crop" alt="Surfing">
+            <div class="slide-caption">Surf Heritage</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1536396123481-991b5b636cbb?w=1400&h=700&fit=crop" alt="Family at beach">
+            <div class="slide-caption">Family First</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&h=700&fit=crop" alt="South Bay beach">
+            <div class="slide-caption">South Bay Roots</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1455729552865-3658a5d39692?w=1400&h=700&fit=crop" alt="Kids surfing">
+            <div class="slide-caption">Next Generation</div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="carousel-btn next" id="carouselNext" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+
+    <!-- Owner Cards -->
+    <div class="owners-grid" style="max-width:1400px; margin: 0 auto;">
+      <!-- Tommy -->
+      <div class="owner-card">
+        <div class="owner-card-top green"></div>
+        <div class="owner-card-body">
+          <div class="owner-name">Tommy Ostendorf</div>
+          <div class="owner-role">Owner</div>
+          <p class="owner-bio">I began teaching surf lessons as a 13-year-old at the Manhattan Beach pier with Jimmy Miller's Pure Surfing Experience and have been involved in youth programs ever since. I'm a Mira Costa graduate with a business degree from the University of San Diego, where I was captain of the surf team and Collegiate National Champion in 2007.</p>
+          <div class="family-note">
+            <strong>Father of three</strong> — ages 5, 8, and 10 — who are my guide for every decision we make. "Would I be comfortable dropping my kids off here?" drives everything.
+          </div>
+          <div class="tag-row">
+            <span class="tag">🏄 2007 Collegiate National Champion</span>
+            <span class="tag">📚 USD Business Degree</span>
+            <span class="tag">🌊 30+ Years Ocean Experience</span>
+          </div>
+        </div>
+      </div>
+      <!-- Libby -->
+      <div class="owner-card">
+        <div class="owner-card-top gold"></div>
+        <div class="owner-card-body">
+          <div class="owner-name">Libby Ostendorf</div>
+          <div class="owner-role">Co-Owner &amp; Arena House Director</div>
+          <p class="owner-bio">Behind every great program is someone making sure everything runs smoothly behind the scenes. Libby manages Arena House, our event venue, and handles the essential operations and support that keep BeachSports running seamlessly. Her attention to detail and commitment to families ensures every aspect of the BeachSports experience exceeds expectations.</p>
+          <div class="family-note">
+            <strong>Mother of three</strong> — ages 5, 8, and 10 — Libby brings a parent's perspective to everything we do, ensuring programs feel safe, welcoming, and thoughtfully designed for families.
+          </div>
+          <div class="tag-row">
+            <span class="tag">🏢 Arena House Director</span>
+            <span class="tag">💼 Operations Expert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PROGRAM DIRECTOR — JENN
+  ═══════════════════════════════════════ -->
+  <section class="director-section">
+    <div class="director-inner">
+      <div class="director-header">
+        <div class="section-label">Behind the Scenes</div>
+        <h2 class="section-title">Program <em>Director</em></h2>
+      </div>
+      <div class="director-featured">
+        <div class="dir-feat-img">
+          <div class="dir-feat-bar"></div>
+          <img src="https://beachsports.com/wp-content/uploads/2025/03/Jenn-Headshot.jpg" alt="Jenn Martin">
+        </div>
+        <div class="dir-feat-body">
+          <div class="dir-name">Jenn Martin</div>
+          <div class="dir-role">Program Director</div>
+          <p class="dir-bio">Jenn oversees all BeachSports program locations and is always available during program hours to support Location Directors and Head Coaches and to communicate with parents. As a mother of two, former private school teacher, and D1 collegiate soccer player, she is exceptionally skilled at communicating positively and effectively with our participants. Jenn is responsible for the creation and evolution of our program curriculum, based on her professional teaching experience.</p>
+          <div class="stats-row">
+            <div class="stat-box">
+              <div class="stat-label">Experience</div>
+              <div class="stat-value">10+ Years</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Background</div>
+              <div class="stat-value">Educator</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Specialty</div>
+              <div class="stat-value">Curriculum</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Athletics</div>
+              <div class="stat-value">D1 Soccer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SUPPORT TEAM — LISA & MACY
+  ═══════════════════════════════════════ -->
+  <section class="support-section">
+    <div class="support-inner">
+      <div class="support-header">
+        <div class="section-label">The Support Team</div>
+        <h2 class="section-title">Making It <em>All Happen</em></h2>
+      </div>
+      <div class="support-grid">
+        <!-- Lisa -->
+        <div class="support-card">
+          <div class="support-img-wrap">
+            <div class="support-img-bar gold"></div>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&h=500&fit=crop" alt="Lisa Shea">
+          </div>
+          <div class="support-body">
+            <div class="support-name">Lisa Shea</div>
+            <div class="support-role">Customer Service Specialist</div>
+            <p class="support-bio">Lisa is the friendly voice behind BeachSports' customer experience. She ensures every family feels heard, valued, and taken care of from registration through program completion. Her warm approach makes every interaction seamless and positive.</p>
+            <div class="tag-row">
+              <span class="tag">Family-Focused</span>
+              <span class="tag">Problem Solver</span>
+              <span class="tag">Detail-Oriented</span>
+            </div>
+          </div>
+        </div>
+        <!-- Macy -->
+        <div class="support-card">
+          <div class="support-img-wrap">
+            <div class="support-img-bar orange"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-30.png" alt="Macy Fitzpatrick">
+          </div>
+          <div class="support-body">
+            <div class="support-name">Macy Fitzpatrick</div>
+            <div class="support-role">Marketing &amp; Community Specialist</div>
+            <p class="support-bio">Macy brings BeachSports' story to life through creative marketing and genuine community engagement. After 10 years as a camper, 3 years as a coach, and 2 years as a Location Director, she knows exactly what makes BeachSports special and connects with families across the South Bay.</p>
+            <div class="tag-row">
+              <span class="tag">University of Utah Alum</span>
+              <span class="tag">Strategic Communication</span>
+              <span class="tag">Minor in Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       LOCATION DIRECTORS
+  ═══════════════════════════════════════ -->
+  <section class="ldirectors-section">
+    <div class="ldirectors-inner">
+      <div class="ldirectors-header">
+        <div class="section-label">The Crew on the Ground</div>
+        <h2 class="section-title">Location <em>Directors</em></h2>
+      </div>
+      <div class="ldirectors-grid">
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-23.png" alt="Ashlyn Autrey">
+            <span class="ldir-location-badge">Manhattan 15th St</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Ashlyn Autrey</div>
+            <div class="ldir-role">Manhattan 15th St Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">Experienced LD who also leads high-impact sports programs for girls in under-resourced communities.</p>
+            <div class="pill-row">
+              <span class="pill">8 Years</span>
+              <span class="pill">Youth Development</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-25.png" alt="Lucca Franz">
+            <span class="ldir-location-badge">Manhattan 6th St</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Lucca Franz</div>
+            <div class="ldir-role">Manhattan 6th Street Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">Middlebury College senior and varsity XC/Track runner studying Conservation Biology and Psychology, who makes every camper feel seen and cared for.</p>
+            <div class="pill-row">
+              <span class="pill">6 Years</span>
+              <span class="pill">Middlebury Athlete</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-31-1.png" alt="Fletcher Fitzpatrick">
+            <span class="ldir-location-badge">Manhattan 6th St</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Fletcher Fitzpatrick</div>
+            <div class="ldir-role">Manhattan 6th Street Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">Studying Strategic Comm at the University of Utah. Fletch brings humorous energy from drop-off to pick-up.</p>
+            <div class="pill-row">
+              <span class="pill">4 Years</span>
+              <span class="pill">U of Utah</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/BeachSports_RBSURF_38-scaled.jpg" alt="Coco Sandoval">
+            <span class="ldir-location-badge">Redondo Surf</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Coco Sandoval</div>
+            <div class="ldir-role">Redondo Surf Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">Competitive surfer and certified instructor. Teaching kids the art of wave riding with patience, skill, and stoke.</p>
+            <div class="pill-row">
+              <span class="pill">12+ Years</span>
+              <span class="pill">Pro Surfer</span>
+              <span class="pill">ISA Certified</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-16.png" alt="Rocco Kuykendall">
+            <span class="ldir-location-badge">Redondo</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Rocco Kuykendall</div>
+            <div class="ldir-role">Redondo Surf, Ocean, Vball Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">University of Utah finance student and insurance broker who brings endless energy and a constant smile to camp every day.</p>
+            <div class="pill-row">
+              <span class="pill">4 Years</span>
+              <span class="pill">U of Utah Finance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-19.png" alt="Carly Fornadley">
+            <span class="ldir-location-badge">Redondo Beach</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Carly Fornadley</div>
+            <div class="ldir-role">Redondo Beach Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">San Diego State University senior studying Kinesiology Pre-Med, leads with kindness and great enthusiasm.</p>
+            <div class="pill-row">
+              <span class="pill">2 Years</span>
+              <span class="pill">SDSU Pre-Med</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-21.png" alt="Taylor Dunlap">
+            <span class="ldir-location-badge">Hermosa Beach</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Taylor Dunlap</div>
+            <div class="ldir-role">Hermosa Beach Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">D1 volleyball player at Cal State Northridge studying Recreation Tourism Management. A beloved camp innovator and high-energy leader.</p>
+            <div class="pill-row">
+              <span class="pill">4 Years</span>
+              <span class="pill">CSUN D1 Athlete</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-35.png" alt="Jason Cooney-Cordero">
+            <span class="ldir-location-badge">Skate</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Jason Cooney-Cordero</div>
+            <div class="ldir-role">Skate Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">Pepperdine University Business Administration student with a unique ability to connect with young campers while managing seamless camp operations.</p>
+            <div class="pill-row">
+              <span class="pill">3+ Years</span>
+              <span class="pill">Pepperdine Business</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ldir-card">
+          <div class="ldir-photo">
+            <div class="ldir-photo-bar"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-26.png" alt="JT Nelson">
+            <span class="ldir-location-badge">Skate</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">JT Nelson</div>
+            <div class="ldir-role">Skate Director</div>
+            <div class="ldir-divider"></div>
+            <p class="ldir-snippet">Seven year BeachSports veteran and local skate scene enthusiast who transforms nervous beginners into confident street skaters.</p>
+            <div class="pill-row">
+              <span class="pill">7+ Years</span>
+              <span class="pill">El Camino College</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CTA BAND
+  ═══════════════════════════════════════ -->
+  <div class="cta-band">
+    <div class="section-label">Ready to join us?</div>
+    <h2 class="cta-h2">See You <em>This Summer</em></h2>
+    <div class="cta-btns">
+      <a href="https://beachsports.com/summer-camps/" class="btn-primary">
+        View Programs
+        <svg width="13" height="13" fill="none" viewBox="0 0 14 14">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="https://beachsports.com/year-round/" class="btn-secondary-light">Year-Round Programs</a>
+    </div>
+  </div>
+
+  <script>
+    // ── CAROUSEL ──
+    const track   = document.getElementById('carouselTrack');
+    const slides  = track.querySelectorAll('.carousel-slide');
+    const dotsEl  = document.getElementById('carouselDots');
+    let cur = 0, autoT;
+
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'cdot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    });
+
+    function goTo(idx) {
+      cur = (idx + slides.length) % slides.length;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      dotsEl.querySelectorAll('.cdot').forEach((d, i) => d.classList.toggle('active', i === cur));
+      resetAuto();
+    }
+    document.getElementById('carouselPrev').addEventListener('click', () => goTo(cur - 1));
+    document.getElementById('carouselNext').addEventListener('click', () => goTo(cur + 1));
+
+    function resetAuto() {
+      clearInterval(autoT);
+      autoT = setInterval(() => goTo(cur + 1), 4500);
+    }
+    resetAuto();
+
+    // Touch swipe
+    let tsX = 0;
+    track.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = tsX - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 40) goTo(dx > 0 ? cur + 1 : cur - 1);
+    }, { passive: true });
+  </script>
+</body>
+</html>
