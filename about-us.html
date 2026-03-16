@@ -603,7 +603,7 @@
       aspect-ratio: 3 / 4;
       overflow: hidden;
     }
-    /* Make a couple cards portrait-short for rhythm */
+    /* Stagger aspect ratios for masonry rhythm */
     .ldir-card:nth-child(3n+2) .ldir-photo { aspect-ratio: 4 / 5; }
     .ldir-card:nth-child(4n)   .ldir-photo { aspect-ratio: 3 / 3.5; }
 
@@ -615,83 +615,65 @@
       display: block;
       transition: transform .6s cubic-bezier(.22,.68,0,1.1);
     }
-    .ldir-card:hover .ldir-photo img { transform: scale(1.07); }
+    .ldir-card:hover .ldir-photo img { transform: scale(1.05); }
 
-    /* Gradient overlay — always visible at bottom for name legibility */
+    /* Subtle bottom gradient for visual bleed into info */
     .ldir-photo::after {
       content: '';
       position: absolute; inset: 0;
       background: linear-gradient(
         to top,
-        rgba(26,18,8,.92) 0%,
-        rgba(26,18,8,.4) 38%,
-        transparent 60%
+        rgba(22,14,6,.55) 0%,
+        transparent 45%
       );
-      transition: background .35s;
       pointer-events: none;
     }
-    .ldir-card:hover .ldir-photo::after {
-      background: linear-gradient(
-        to top,
-        rgba(26,18,8,.97) 0%,
-        rgba(26,18,8,.75) 55%,
-        rgba(26,18,8,.15) 100%
-      );
-    }
 
-    /* Name always visible at bottom */
-    .ldir-always {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      z-index: 3;
-      padding: 0 18px 16px;
-    }
-    .ldir-name {
-      font-size: 1.1rem;
-      font-weight: 900;
-      letter-spacing: -.5px;
-      text-transform: uppercase;
-      color: #fff;
-      line-height: 1.1;
-    }
+    /* Location badge overlaid on bottom of photo */
     .ldir-location-badge {
-      display: inline-block;
+      position: absolute;
+      bottom: 14px; left: 14px;
+      z-index: 3;
       font-size: .55rem;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 4px;
+      background: rgba(26,18,8,.6);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(251,172,43,.25);
+      padding: 4px 10px;
+      border-radius: 50px;
     }
 
-    /* Bio overlay — slides up on hover */
-    .ldir-hover {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      z-index: 4;
-      padding: 0 18px 18px;
-      transform: translateY(14px);
-      opacity: 0;
-      transition: transform .35s cubic-bezier(.22,.68,0,1.15),
-                  opacity .3s ease;
+    /* Always-visible info panel below photo */
+    .ldir-info {
+      padding: 20px 20px 22px;
+      background: rgba(255,255,255,.04);
+      border-top: 1px solid rgba(255,255,255,.07);
     }
-    .ldir-card:hover .ldir-hover {
-      transform: translateY(0);
-      opacity: 1;
+    .ldir-name {
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: -.3px;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 3px;
     }
     .ldir-role {
-      font-size: .58rem;
+      font-size: .57rem;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
     .ldir-snippet {
-      font-size: .78rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,.8);
-      margin-bottom: 10px;
+      font-size: .82rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,.58);
+      margin-bottom: 12px;
     }
     .pill-row { display: flex; flex-wrap: wrap; gap: 5px; }
     .pill {
@@ -701,9 +683,9 @@
       text-transform: uppercase;
       padding: 3px 9px;
       border-radius: 50px;
-      border: 1px solid rgba(255,255,255,.2);
-      color: rgba(255,255,255,.7);
-      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.06);
     }
 
     /* Mobile: 2 columns, no rotations */
@@ -1049,17 +1031,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-23.png" alt="Ashlyn Autrey">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Manhattan 15th St</div>
-              <div class="ldir-name">Ashlyn Autrey</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Manhattan 15th St Director</div>
-              <p class="ldir-snippet">Experienced LD who also leads high-impact sports programs for girls in under-resourced communities.</p>
-              <div class="pill-row">
-                <span class="pill">8 Years</span>
-                <span class="pill">Youth Development</span>
-              </div>
+            <span class="ldir-location-badge">Manhattan 15th St</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Ashlyn Autrey</div>
+            <div class="ldir-role">Manhattan 15th St Director</div>
+            <p class="ldir-snippet">Experienced LD who also leads high-impact sports programs for girls in under-resourced communities.</p>
+            <div class="pill-row">
+              <span class="pill">8 Years</span>
+              <span class="pill">Youth Development</span>
             </div>
           </div>
         </div>
@@ -1067,17 +1047,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-25.png" alt="Lucca Franz">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Manhattan 6th St</div>
-              <div class="ldir-name">Lucca Franz</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Manhattan 6th Street Director</div>
-              <p class="ldir-snippet">Middlebury College senior and varsity XC/Track runner studying Conservation Biology and Psychology, who makes every camper feel seen and cared for.</p>
-              <div class="pill-row">
-                <span class="pill">6 Years</span>
-                <span class="pill">Middlebury Athlete</span>
-              </div>
+            <span class="ldir-location-badge">Manhattan 6th St</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Lucca Franz</div>
+            <div class="ldir-role">Manhattan 6th Street Director</div>
+            <p class="ldir-snippet">Middlebury College senior and varsity XC/Track runner studying Conservation Biology and Psychology, who makes every camper feel seen and cared for.</p>
+            <div class="pill-row">
+              <span class="pill">6 Years</span>
+              <span class="pill">Middlebury Athlete</span>
             </div>
           </div>
         </div>
@@ -1085,17 +1063,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-31-1.png" alt="Fletcher Fitzpatrick">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Manhattan 6th St</div>
-              <div class="ldir-name">Fletcher Fitzpatrick</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Manhattan 6th Street Director</div>
-              <p class="ldir-snippet">Studying Strategic Comm at the University of Utah. Fletch brings humorous energy from drop-off to pick-up.</p>
-              <div class="pill-row">
-                <span class="pill">4 Years</span>
-                <span class="pill">U of Utah</span>
-              </div>
+            <span class="ldir-location-badge">Manhattan 6th St</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Fletcher Fitzpatrick</div>
+            <div class="ldir-role">Manhattan 6th Street Director</div>
+            <p class="ldir-snippet">Studying Strategic Comm at the University of Utah. Fletch brings humorous energy from drop-off to pick-up.</p>
+            <div class="pill-row">
+              <span class="pill">4 Years</span>
+              <span class="pill">U of Utah</span>
             </div>
           </div>
         </div>
@@ -1103,18 +1079,16 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/BeachSports_RBSURF_38-scaled.jpg" alt="Coco Sandoval">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Redondo Surf</div>
-              <div class="ldir-name">Coco Sandoval</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Redondo Surf Director</div>
-              <p class="ldir-snippet">Competitive surfer and certified instructor. Teaching kids the art of wave riding with patience, skill, and stoke.</p>
-              <div class="pill-row">
-                <span class="pill">12+ Years</span>
-                <span class="pill">Pro Surfer</span>
-                <span class="pill">ISA Certified</span>
-              </div>
+            <span class="ldir-location-badge">Redondo Surf</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Coco Sandoval</div>
+            <div class="ldir-role">Redondo Surf Director</div>
+            <p class="ldir-snippet">Competitive surfer and certified instructor. Teaching kids the art of wave riding with patience, skill, and stoke.</p>
+            <div class="pill-row">
+              <span class="pill">12+ Years</span>
+              <span class="pill">Pro Surfer</span>
+              <span class="pill">ISA Certified</span>
             </div>
           </div>
         </div>
@@ -1122,17 +1096,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-16.png" alt="Rocco Kuykendall">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Redondo</div>
-              <div class="ldir-name">Rocco Kuykendall</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Redondo Surf, Ocean, Vball Director</div>
-              <p class="ldir-snippet">University of Utah finance student and insurance broker who brings endless energy and a constant smile to camp every day.</p>
-              <div class="pill-row">
-                <span class="pill">4 Years</span>
-                <span class="pill">U of Utah Finance</span>
-              </div>
+            <span class="ldir-location-badge">Redondo</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Rocco Kuykendall</div>
+            <div class="ldir-role">Redondo Surf, Ocean, Vball Director</div>
+            <p class="ldir-snippet">University of Utah finance student and insurance broker who brings endless energy and a constant smile to camp every day.</p>
+            <div class="pill-row">
+              <span class="pill">4 Years</span>
+              <span class="pill">U of Utah Finance</span>
             </div>
           </div>
         </div>
@@ -1140,17 +1112,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-19.png" alt="Carly Fornadley">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Redondo Beach</div>
-              <div class="ldir-name">Carly Fornadley</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Redondo Beach Director</div>
-              <p class="ldir-snippet">San Diego State University senior studying Kinesiology Pre-Med, leads with kindness and great enthusiasm.</p>
-              <div class="pill-row">
-                <span class="pill">2 Years</span>
-                <span class="pill">SDSU Pre-Med</span>
-              </div>
+            <span class="ldir-location-badge">Redondo Beach</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Carly Fornadley</div>
+            <div class="ldir-role">Redondo Beach Director</div>
+            <p class="ldir-snippet">San Diego State University senior studying Kinesiology Pre-Med, leads with kindness and great enthusiasm.</p>
+            <div class="pill-row">
+              <span class="pill">2 Years</span>
+              <span class="pill">SDSU Pre-Med</span>
             </div>
           </div>
         </div>
@@ -1158,17 +1128,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-21.png" alt="Taylor Dunlap">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Hermosa Beach</div>
-              <div class="ldir-name">Taylor Dunlap</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Hermosa Beach Director</div>
-              <p class="ldir-snippet">D1 volleyball player at Cal State Northridge studying Recreation Tourism Management. A beloved camp innovator and high-energy leader.</p>
-              <div class="pill-row">
-                <span class="pill">4 Years</span>
-                <span class="pill">CSUN D1 Athlete</span>
-              </div>
+            <span class="ldir-location-badge">Hermosa Beach</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Taylor Dunlap</div>
+            <div class="ldir-role">Hermosa Beach Director</div>
+            <p class="ldir-snippet">D1 volleyball player at Cal State Northridge studying Recreation Tourism Management. A beloved camp innovator and high-energy leader.</p>
+            <div class="pill-row">
+              <span class="pill">4 Years</span>
+              <span class="pill">CSUN D1 Athlete</span>
             </div>
           </div>
         </div>
@@ -1176,17 +1144,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-35.png" alt="Jason Cooney-Cordero">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Skate</div>
-              <div class="ldir-name">Jason Cooney-Cordero</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Skate Director</div>
-              <p class="ldir-snippet">Pepperdine University Business Administration student with a unique ability to connect with young campers while managing seamless camp operations.</p>
-              <div class="pill-row">
-                <span class="pill">3+ Years</span>
-                <span class="pill">Pepperdine Business</span>
-              </div>
+            <span class="ldir-location-badge">Skate</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">Jason Cooney-Cordero</div>
+            <div class="ldir-role">Skate Director</div>
+            <p class="ldir-snippet">Pepperdine University Business Administration student with a unique ability to connect with young campers while managing seamless camp operations.</p>
+            <div class="pill-row">
+              <span class="pill">3+ Years</span>
+              <span class="pill">Pepperdine Business</span>
             </div>
           </div>
         </div>
@@ -1194,17 +1160,15 @@
         <div class="ldir-card">
           <div class="ldir-photo">
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-26.png" alt="JT Nelson">
-            <div class="ldir-always">
-              <div class="ldir-location-badge">Skate</div>
-              <div class="ldir-name">JT Nelson</div>
-            </div>
-            <div class="ldir-hover">
-              <div class="ldir-role">Skate Director</div>
-              <p class="ldir-snippet">Seven year BeachSports veteran and local skate scene enthusiast who transforms nervous beginners into confident street skaters.</p>
-              <div class="pill-row">
-                <span class="pill">7+ Years</span>
-                <span class="pill">El Camino College</span>
-              </div>
+            <span class="ldir-location-badge">Skate</span>
+          </div>
+          <div class="ldir-info">
+            <div class="ldir-name">JT Nelson</div>
+            <div class="ldir-role">Skate Director</div>
+            <p class="ldir-snippet">Seven year BeachSports veteran and local skate scene enthusiast who transforms nervous beginners into confident street skaters.</p>
+            <div class="pill-row">
+              <span class="pill">7+ Years</span>
+              <span class="pill">El Camino College</span>
             </div>
           </div>
         </div>
