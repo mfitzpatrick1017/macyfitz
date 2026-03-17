@@ -204,59 +204,57 @@
     ───────────────────────────────────── */
     .owners-section {
       background: var(--off);
-      padding: 90px 56px;
+      padding: 60px 56px 72px;
       overflow: hidden;
     }
     .owners-header {
       max-width: 1400px;
-      margin: 0 auto 56px;
+      margin: 0 auto 40px;
     }
     .owners-grid {
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 24px;
     }
     .owner-card {
       background: var(--white);
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,.07);
+      box-shadow: 0 6px 24px rgba(0,0,0,.07);
       transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
     }
     .owner-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 52px rgba(0,0,0,.12);
+      transform: translateY(-5px);
+      box-shadow: 0 18px 44px rgba(0,0,0,.11);
     }
-    .owner-card-top {
-      height: 4px;
-    }
+    .owner-card-top { height: 4px; }
     .owner-card-top.green { background: var(--green); }
     .owner-card-top.gold  { background: var(--gold); }
-    .owner-card-body { padding: 44px 48px 48px; }
+    .owner-card-body { padding: 30px 34px 36px; }
     .owner-name {
-      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      font-size: clamp(1.5rem, 2vw, 1.9rem);
       font-weight: 900;
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
       text-transform: uppercase;
       color: var(--dark);
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .owner-role {
-      font-size: .65rem;
+      font-size: .62rem;
       font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
     .owner-bio {
-      font-size: .97rem;
-      line-height: 1.82;
+      font-size: .93rem;
+      line-height: 1.78;
       color: var(--text);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
     .family-note {
       background: rgba(16,180,138,.07);
@@ -282,226 +280,67 @@
     }
 
     /* ─────────────────────────────────────
-       CAROUSEL (between owners header and card)
+       STAFF — JENN, LISA & MACY
     ───────────────────────────────────── */
-    .carousel-outer {
-      max-width: 1400px;
-      margin: 0 auto 56px;
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0,0,0,.1);
-    }
-    .carousel-track-outer { overflow: hidden; }
-    .carousel-track {
-      display: flex;
-      transition: transform .55s cubic-bezier(.4,0,.2,1);
-    }
-    .carousel-slide { min-width: 100%; position: relative; }
-    .carousel-slide img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      display: block;
-    }
-    .slide-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(20,12,4,.6) 0%, transparent 100%);
-      padding: 60px 36px 24px;
-      color: rgba(255,255,255,.85);
-      font-size: .68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-    }
-    .carousel-btn {
-      position: absolute;
-      top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,.88);
-      border: none;
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 10;
-      transition: background .2s, transform .2s;
-      box-shadow: 0 4px 16px rgba(0,0,0,.15);
-    }
-    .carousel-btn:hover {
-      background: var(--green);
-      transform: translateY(-50%) scale(1.08);
-    }
-    .carousel-btn:hover svg path { stroke: white; }
-    .carousel-btn svg path { stroke: #333; transition: stroke .2s; }
-    .carousel-btn.prev { left: 20px; }
-    .carousel-btn.next { right: 20px; }
-    .carousel-dots {
-      position: absolute;
-      bottom: 18px; right: 24px;
-      display: flex; gap: 7px;
-      z-index: 10;
-    }
-    .cdot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.4);
-      cursor: pointer;
-      transition: background .2s, transform .2s;
-      border: none;
-    }
-    .cdot.active { background: var(--green); transform: scale(1.35); }
-
-    /* ─────────────────────────────────────
-       PROGRAM DIRECTOR (Jenn)
-    ───────────────────────────────────── */
-    .director-section {
-      padding: 90px 56px;
-      background: var(--white);
-    }
-    .director-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .director-header { margin-bottom: 48px; }
-    .director-featured {
-      display: grid;
-      grid-template-columns: 420px 1fr;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 12px 44px rgba(0,0,0,.09);
-      transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
-    }
-    .director-featured:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 56px rgba(0,0,0,.14);
-    }
-    .dir-feat-img {
-      position: relative;
-      overflow: hidden;
-    }
-    .dir-feat-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      transition: transform .6s cubic-bezier(.22,.68,0,1.1);
-    }
-    .director-featured:hover .dir-feat-img img { transform: scale(1.05); }
-    .dir-feat-bar {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--orange);
-    }
-    .dir-feat-body {
-      padding: 52px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--white);
-    }
-    .dir-name {
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      text-transform: uppercase;
-      color: var(--dark);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .dir-role {
-      font-size: .65rem;
-      font-weight: 800;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 24px;
-    }
-    .dir-bio {
-      font-size: .97rem;
-      line-height: 1.82;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-    .stat-box {
+    .staff-section {
       background: var(--off);
-      border-top: 3px solid var(--green);
-      border-radius: 10px;
-      padding: 12px 14px;
+      padding: 90px 0 100px;
+      overflow: hidden;
     }
-    .stat-label {
-      font-size: .6rem;
-      color: var(--text);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 700;
-      margin-bottom: 5px;
+    .staff-inner { max-width: 1400px; margin: 0 auto; }
+    .staff-header {
+      padding: 0 56px;
+      margin-bottom: 52px;
     }
-    .stat-value {
-      font-size: .88rem;
-      font-weight: 800;
-      color: var(--dark);
-      letter-spacing: -.3px;
+    .staff-scroll {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 8px 56px 48px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
     }
-
-    /* ─────────────────────────────────────
-       SUPPORT TEAM (Lisa & Macy)
-    ───────────────────────────────────── */
-    .support-section {
-      background: var(--off);
-      padding: 90px 56px;
-    }
-    .support-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .support-header { margin-bottom: 48px; }
-    .support-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-    .support-card {
+    .staff-scroll::-webkit-scrollbar { display: none; }
+    .staff-card {
+      flex: 0 0 440px;
       background: var(--white);
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,.07);
+      scroll-snap-align: start;
       transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
     }
-    .support-card:hover {
+    .staff-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 22px 52px rgba(0,0,0,.13);
     }
-    .support-img-wrap {
+    .staff-img {
       position: relative;
-      height: 360px;
+      height: 320px;
       overflow: hidden;
     }
-    .support-img-wrap img {
+    .staff-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: top;
+      display: block;
       transition: transform .55s cubic-bezier(.22,.68,0,1.1);
     }
-    .support-card:hover .support-img-wrap img { transform: scale(1.05); }
-    .support-img-bar {
+    .staff-card:hover .staff-img img { transform: scale(1.05); }
+    .staff-bar {
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 4px;
     }
-    .support-img-bar.gold   { background: var(--gold); }
-    .support-img-bar.orange { background: var(--orange); }
-    .support-body { padding: 36px 40px 42px; }
-    .support-name {
-      font-size: clamp(1.6rem, 2vw, 2.1rem);
+    .staff-bar.orange { background: var(--orange); }
+    .staff-bar.gold   { background: var(--gold); }
+    .staff-bar.green  { background: var(--green); }
+    .staff-body { padding: 36px 40px 44px; }
+    .staff-name {
+      font-size: clamp(1.7rem, 2vw, 2.2rem);
       font-weight: 900;
       letter-spacing: -1px;
       text-transform: uppercase;
@@ -509,19 +348,21 @@
       line-height: 1;
       margin-bottom: 6px;
     }
-    .support-role {
+    .staff-role {
       font-size: .63rem;
       font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--green);
       margin-bottom: 22px;
     }
-    .support-bio {
+    .staff-role.orange { color: var(--orange); }
+    .staff-role.gold   { color: var(--gold); }
+    .staff-role.green  { color: var(--green); }
+    .staff-bio {
       font-size: .95rem;
-      line-height: 1.8;
+      line-height: 1.82;
       color: var(--text);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     /* ─────────────────────────────────────
@@ -761,35 +602,29 @@
     @media (max-width: 1100px) {
       .origin-section,
       .owners-section,
-      .director-section,
-      .support-section,
       .ldirectors-section,
       .cta-band { padding-left: 32px; padding-right: 32px; }
-      .director-featured { grid-template-columns: 340px 1fr; }
+      .staff-header { padding-left: 32px; padding-right: 32px; }
+      .staff-scroll { padding-left: 32px; padding-right: 32px; }
     }
     @media (max-width: 900px) {
       .origin-inner { grid-template-columns: 1fr; gap: 40px; }
       .origin-img-wrap img { height: 380px; }
       .owners-grid { grid-template-columns: 1fr; }
-      .director-featured { grid-template-columns: 1fr; }
-      .dir-feat-img { height: 360px; }
-      .dir-feat-img img { position: relative; width: 100%; height: 360px; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .support-grid { grid-template-columns: 1fr; }
+      .staff-card { flex: 0 0 360px; }
       .ldirectors-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
       .origin-section,
       .owners-section,
-      .director-section,
-      .support-section,
       .ldirectors-section,
       .cta-band { padding-left: 20px; padding-right: 20px; }
+      .staff-header { padding-left: 20px; padding-right: 20px; }
+      .staff-scroll { padding-left: 20px; padding-right: 20px; }
+      .staff-card { flex: 0 0 calc(100vw - 40px); }
       .hero-h1 { letter-spacing: -2px; }
-      .carousel-slide img { height: 300px; }
       .ldirectors-grid { grid-template-columns: 1fr; }
-      .dir-feat-body { padding: 32px 28px; }
-      .owner-card-body { padding: 32px 28px 36px; }
+      .owner-card-body { padding: 24px 22px 28px; }
     }
   </style>
 </head>
@@ -852,41 +687,6 @@
       <h2 class="section-title">The <em>Ostendorfs</em></h2>
     </div>
 
-    <!-- Carousel -->
-    <div class="carousel-outer" style="margin-bottom: 48px;">
-      <div class="carousel-track-outer">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide">
-            <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports on the water">
-            <div class="slide-caption">On the Water</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1400&h=700&fit=crop" alt="Surfing">
-            <div class="slide-caption">Surf Heritage</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1536396123481-991b5b636cbb?w=1400&h=700&fit=crop" alt="Family at beach">
-            <div class="slide-caption">Family First</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&h=700&fit=crop" alt="South Bay beach">
-            <div class="slide-caption">South Bay Roots</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1455729552865-3658a5d39692?w=1400&h=700&fit=crop" alt="Kids surfing">
-            <div class="slide-caption">Next Generation</div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="carousel-btn next" id="carouselNext" aria-label="Next">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-
     <!-- Owner Cards -->
     <div class="owners-grid" style="max-width:1400px; margin: 0 auto;">
       <!-- Tommy -->
@@ -926,66 +726,45 @@
   </section>
 
   <!-- ═══════════════════════════════════════
-       PROGRAM DIRECTOR — JENN
+       BEHIND THE SCENES — JENN, LISA & MACY
   ═══════════════════════════════════════ -->
-  <section class="director-section">
-    <div class="director-inner">
-      <div class="director-header">
+  <section class="staff-section">
+    <div class="staff-inner">
+      <div class="staff-header">
         <div class="section-label">Behind the Scenes</div>
-        <h2 class="section-title">Program <em>Director</em></h2>
+        <h2 class="section-title">The <em>Team</em></h2>
       </div>
-      <div class="director-featured">
-        <div class="dir-feat-img">
-          <div class="dir-feat-bar"></div>
-          <img src="https://beachsports.com/wp-content/uploads/2025/03/Jenn-Headshot.jpg" alt="Jenn Martin">
-        </div>
-        <div class="dir-feat-body">
-          <div class="dir-name">Jenn Martin</div>
-          <div class="dir-role">Program Director</div>
-          <p class="dir-bio">Jenn oversees all BeachSports program locations and is always available during program hours to support Location Directors and Head Coaches and to communicate with parents. As a mother of two, former private school teacher, and D1 collegiate soccer player, she is exceptionally skilled at communicating positively and effectively with our participants. Jenn is responsible for the creation and evolution of our program curriculum, based on her professional teaching experience.</p>
-          <div class="stats-row">
-            <div class="stat-box">
-              <div class="stat-label">Experience</div>
-              <div class="stat-value">10+ Years</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-label">Background</div>
-              <div class="stat-value">Educator</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-label">Specialty</div>
-              <div class="stat-value">Curriculum</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-label">Athletics</div>
-              <div class="stat-value">D1 Soccer</div>
+      <div class="staff-scroll">
+
+        <!-- Jenn -->
+        <div class="staff-card">
+          <div class="staff-img">
+            <div class="staff-bar orange"></div>
+            <img src="https://beachsports.com/wp-content/uploads/2025/03/Jenn-Headshot.jpg" alt="Jenn Martin">
+          </div>
+          <div class="staff-body">
+            <div class="staff-name">Jenn Martin</div>
+            <div class="staff-role orange">Program Director</div>
+            <p class="staff-bio">Jenn oversees all BeachSports program locations and is always available during program hours to support Location Directors and Head Coaches. As a mother of two, former private school teacher, and D1 collegiate soccer player, she is exceptionally skilled at communicating with participants and responsible for the creation of our program curriculum.</p>
+            <div class="tag-row">
+              <span class="tag">10+ Years</span>
+              <span class="tag">D1 Soccer</span>
+              <span class="tag">Former Educator</span>
+              <span class="tag">Curriculum Design</span>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════
-       SUPPORT TEAM — LISA & MACY
-  ═══════════════════════════════════════ -->
-  <section class="support-section">
-    <div class="support-inner">
-      <div class="support-header">
-        <div class="section-label">The Support Team</div>
-        <h2 class="section-title">Making It <em>All Happen</em></h2>
-      </div>
-      <div class="support-grid">
         <!-- Lisa -->
-        <div class="support-card">
-          <div class="support-img-wrap">
-            <div class="support-img-bar gold"></div>
+        <div class="staff-card">
+          <div class="staff-img">
+            <div class="staff-bar gold"></div>
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&h=500&fit=crop" alt="Lisa Shea">
           </div>
-          <div class="support-body">
-            <div class="support-name">Lisa Shea</div>
-            <div class="support-role">Customer Service Specialist</div>
-            <p class="support-bio">Lisa is the friendly voice behind BeachSports' customer experience. She ensures every family feels heard, valued, and taken care of from registration through program completion. Her warm approach makes every interaction seamless and positive.</p>
+          <div class="staff-body">
+            <div class="staff-name">Lisa Shea</div>
+            <div class="staff-role gold">Customer Service Specialist</div>
+            <p class="staff-bio">Lisa is the friendly voice behind BeachSports' customer experience. She ensures every family feels heard, valued, and taken care of from registration through program completion. Her warm approach makes every interaction seamless and positive.</p>
             <div class="tag-row">
               <span class="tag">Family-Focused</span>
               <span class="tag">Problem Solver</span>
@@ -993,16 +772,17 @@
             </div>
           </div>
         </div>
+
         <!-- Macy -->
-        <div class="support-card">
-          <div class="support-img-wrap">
-            <div class="support-img-bar orange"></div>
+        <div class="staff-card">
+          <div class="staff-img">
+            <div class="staff-bar green"></div>
             <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-30.png" alt="Macy Fitzpatrick">
           </div>
-          <div class="support-body">
-            <div class="support-name">Macy Fitzpatrick</div>
-            <div class="support-role">Marketing &amp; Community Specialist</div>
-            <p class="support-bio">Macy brings BeachSports' story to life through creative marketing and genuine community engagement. After 10 years as a camper, 3 years as a coach, and 2 years as a Location Director, she knows exactly what makes BeachSports special and connects with families across the South Bay.</p>
+          <div class="staff-body">
+            <div class="staff-name">Macy Fitzpatrick</div>
+            <div class="staff-role green">Marketing &amp; Community Specialist</div>
+            <p class="staff-bio">Macy brings BeachSports' story to life through creative marketing and genuine community engagement. After 10 years as a camper, 3 years as a coach, and 2 years as a Location Director, she knows exactly what makes BeachSports special and connects with families across the South Bay.</p>
             <div class="tag-row">
               <span class="tag">University of Utah Alum</span>
               <span class="tag">Strategic Communication</span>
@@ -1010,6 +790,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1194,42 +975,5 @@
     </div>
   </div>
 
-  <script>
-    // ── CAROUSEL ──
-    const track   = document.getElementById('carouselTrack');
-    const slides  = track.querySelectorAll('.carousel-slide');
-    const dotsEl  = document.getElementById('carouselDots');
-    let cur = 0, autoT;
-
-    slides.forEach((_, i) => {
-      const d = document.createElement('button');
-      d.className = 'cdot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', () => goTo(i));
-      dotsEl.appendChild(d);
-    });
-
-    function goTo(idx) {
-      cur = (idx + slides.length) % slides.length;
-      track.style.transform = `translateX(-${cur * 100}%)`;
-      dotsEl.querySelectorAll('.cdot').forEach((d, i) => d.classList.toggle('active', i === cur));
-      resetAuto();
-    }
-    document.getElementById('carouselPrev').addEventListener('click', () => goTo(cur - 1));
-    document.getElementById('carouselNext').addEventListener('click', () => goTo(cur + 1));
-
-    function resetAuto() {
-      clearInterval(autoT);
-      autoT = setInterval(() => goTo(cur + 1), 4500);
-    }
-    resetAuto();
-
-    // Touch swipe
-    let tsX = 0;
-    track.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-      const dx = tsX - e.changedTouches[0].clientX;
-      if (Math.abs(dx) > 40) goTo(dx > 0 ? cur + 1 : cur - 1);
-    }, { passive: true });
-  </script>
 </body>
 </html>
