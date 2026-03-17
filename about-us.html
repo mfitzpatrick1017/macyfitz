@@ -418,16 +418,16 @@
       flex-wrap: wrap;
       gap: 16px;
     }
-    .ldirectors-header .section-label { color: rgba(255,255,255,.45); }
-    .ldirectors-header .section-label::before { background: rgba(255,255,255,.25); }
-    .ldirectors-header .section-title { color: #fff; }
-    .ldirectors-header .section-title em { color: var(--gold); }
+    .ldirectors-header .section-label { color: rgba(255,255,255,.75); }
+    .ldirectors-header .section-label::before { background: rgba(255,255,255,.5); }
+    .ldirectors-header .section-title { color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.15); }
+    .ldirectors-header .section-title em { color: #fff; font-style: italic; }
     .ldir-count {
       font-size: .65rem;
       font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(255,255,255,.3);
+      color: rgba(255,255,255,.6);
     }
 
     /* 3-column uniform grid */
@@ -472,7 +472,7 @@
     .ldir-photo {
       position: relative;
       width: 100%;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 5 / 3;
       overflow: hidden;
     }
     .ldir-photo img {
@@ -819,7 +819,7 @@
   <!-- ═══════════════════════════════════════
        LOCATION DIRECTORS
   ═══════════════════════════════════════ -->
-  <section class="ldirectors-section">
+  <section class="ldirectors-section" style="background: linear-gradient(135deg, #10b48a 0%, #ffffff 100%) !important;">
     <div class="ldirectors-inner">
       <div class="ldirectors-header">
         <div>
