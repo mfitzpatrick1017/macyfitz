@@ -472,21 +472,7 @@
       pointer-events: none;
     }
 
-    .ldir-location-badge {
-      position: absolute;
-      bottom: 12px; left: 12px;
-      z-index: 3;
-      font-size: .54rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 50px;
-      backdrop-filter: blur(6px);
-    }
-    .ldir-card:nth-child(3n+1) .ldir-location-badge { color: var(--green);  background: rgba(16,180,138,.18);  border: 1px solid rgba(16,180,138,.35); }
-    .ldir-card:nth-child(3n+2) .ldir-location-badge { color: var(--gold);   background: rgba(251,172,43,.15);  border: 1px solid rgba(251,172,43,.32); }
-    .ldir-card:nth-child(3n)   .ldir-location-badge { color: var(--orange); background: rgba(243,119,48,.15);  border: 1px solid rgba(243,119,48,.32); }
+    .ldir-location-badge { display: none; }
 
     .ldir-info {
       padding: 20px 22px 24px;
@@ -498,7 +484,7 @@
       font-weight: 900;
       letter-spacing: -.3px;
       text-transform: uppercase;
-      color: #1c1414;
+      color: var(--dark);
       line-height: 1.1;
       margin-bottom: 4px;
     }
@@ -516,7 +502,7 @@
     .ldir-snippet {
       font-size: .9rem;
       line-height: 1.7;
-      color: #5a4848;
+      color: var(--text);
       margin-bottom: 14px;
     }
     .pill-row { display: flex; flex-wrap: wrap; gap: 5px; }
