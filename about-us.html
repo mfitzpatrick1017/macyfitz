@@ -214,50 +214,48 @@
       gap: 72px;
       align-items: start;
     }
-    /* Scrollable photo stack on the left */
+    /* Dot-carousel photo on the left */
     .owners-photo {
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 12px 40px rgba(0,0,0,.1);
       position: relative;
       height: 620px;
-      overflow-y: auto;
-      scroll-snap-type: y mandatory;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
     }
-    .owners-photo::-webkit-scrollbar { display: none; }
-    .owners-photo img {
-      width: 100%;
-      height: 620px;
+    .owners-photo-track {
+      display: flex;
+      height: 100%;
+      transition: transform .55s cubic-bezier(.4,0,.2,1);
+    }
+    .owners-photo-track img {
+      min-width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center 20%;
       display: block;
-      flex-shrink: 0;
-      scroll-snap-align: start;
     }
-    /* Scroll hint pill */
-    .owners-scroll-hint {
+    .owners-dots {
       position: absolute;
-      bottom: 16px;
+      bottom: 18px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(8px);
-      border-radius: 50px;
-      padding: 6px 14px 6px 10px;
-      font-size: .58rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--dark);
-      pointer-events: none;
-      animation: fadeIn 1s 1.2s ease both;
+      gap: 8px;
+      z-index: 10;
     }
-    .owners-scroll-hint svg { opacity: .7; }
+    .owners-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.45);
+      border: none;
+      cursor: pointer;
+      transition: background .25s, transform .25s;
+      padding: 0;
+    }
+    .owners-dot.active {
+      background: #fff;
+      transform: scale(1.35);
+    }
     /* Right: header + two stacked bios */
     .owners-text { display: flex; flex-direction: column; }
     .owners-text .section-title { margin-bottom: 40px; }
@@ -691,14 +689,17 @@
   <section class="owners-section">
     <div class="owners-inner">
 
-      <!-- Left: scrollable photo stack -->
+      <!-- Left: dot carousel -->
       <div class="owners-photo">
-        <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports on the water">
-        <img src="https://beachsports.com/wp-content/uploads/2026/02/BeachSports_RBSURF_38-scaled.jpg" alt="BeachSports surf camp">
-        <img src="https://beachsports.com/wp-content/uploads/2026/01/Tommy-Headshot.jpg" alt="Tommy Ostendorf">
-        <div class="owners-scroll-hint">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          Scroll
+        <div class="owners-photo-track" id="ownerTrack">
+          <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports on the water">
+          <img src="https://beachsports.com/wp-content/uploads/2026/02/BeachSports_RBSURF_38-scaled.jpg" alt="BeachSports surf camp">
+          <img src="https://beachsports.com/wp-content/uploads/2026/01/Tommy-Headshot.jpg" alt="Tommy Ostendorf">
+        </div>
+        <div class="owners-dots" id="ownerDots">
+          <button class="owners-dot active"></button>
+          <button class="owners-dot"></button>
+          <button class="owners-dot"></button>
         </div>
       </div>
 
@@ -986,6 +987,25 @@
       <a href="https://beachsports.com/year-round/" class="btn-secondary-light">Year-Round Programs</a>
     </div>
   </div>
+
+  <script>
+    (function () {
+      const track = document.getElementById('ownerTrack');
+      const dots  = document.querySelectorAll('#ownerDots .owners-dot');
+      let cur = 0, timer;
+
+      function goTo(i) {
+        cur = i;
+        track.style.transform = `translateX(-${i * 100}%)`;
+        dots.forEach((d, j) => d.classList.toggle('active', j === i));
+      }
+
+      dots.forEach((d, i) => d.addEventListener('click', () => { goTo(i); clearInterval(timer); startAuto(); }));
+
+      function startAuto() { timer = setInterval(() => goTo((cur + 1) % dots.length), 4000); }
+      startAuto();
+    })();
+  </script>
 
 </body>
 </html>
