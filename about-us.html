@@ -403,7 +403,7 @@
        LOCATION DIRECTORS
     ───────────────────────────────────── */
     .ldirectors-section {
-      background: #1c1414;
+      background: linear-gradient(135deg, #10b48a 0%, #77c9f1 100%);
       padding: 90px 48px 100px;
     }
     .ldirectors-inner {
@@ -440,7 +440,7 @@
     .ldir-card {
       border-radius: 16px;
       overflow: hidden;
-      background: #2a1e1e;
+      background: #fff;
       opacity: 0;
       animation: fadeUp .5s ease forwards;
       transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
@@ -459,20 +459,18 @@
       box-shadow: 0 24px 52px rgba(0,0,0,.7);
     }
 
-    /* Cycling top accent bar: green → gold → orange */
+    /* Top accent bar */
     .ldir-card::before {
       content: '';
       display: block;
       height: 3px;
+      background: rgba(255,255,255,.7);
     }
-    .ldir-card:nth-child(3n+1)::before { background: var(--green); }
-    .ldir-card:nth-child(3n+2)::before { background: var(--gold); }
-    .ldir-card:nth-child(3n)::before   { background: var(--orange); }
 
     .ldir-photo {
       position: relative;
       width: 100%;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
     }
     .ldir-photo img {
