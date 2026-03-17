@@ -403,7 +403,7 @@
        LOCATION DIRECTORS
     ───────────────────────────────────── */
     .ldirectors-section {
-      background: linear-gradient(135deg, #10b48a 0%, #77c9f1 100%);
+      background: linear-gradient(135deg, #10b48a 0%, #fff 100%);
       padding: 90px 48px 100px;
     }
     .ldirectors-inner {
@@ -459,13 +459,15 @@
       box-shadow: 0 24px 52px rgba(0,0,0,.7);
     }
 
-    /* Top accent bar */
+    /* Cycling top accent bar: green → gold → orange */
     .ldir-card::before {
       content: '';
       display: block;
       height: 3px;
-      background: rgba(255,255,255,.7);
     }
+    .ldir-card:nth-child(3n+1)::before { background: var(--green); }
+    .ldir-card:nth-child(3n+2)::before { background: var(--gold); }
+    .ldir-card:nth-child(3n)::before   { background: var(--orange); }
 
     .ldir-photo {
       position: relative;
