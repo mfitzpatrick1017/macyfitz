@@ -210,26 +210,54 @@
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 400px 1fr;
+      grid-template-columns: 480px 1fr;
       gap: 72px;
       align-items: start;
     }
-    /* Tall photo on the left */
+    /* Scrollable photo stack on the left */
     .owners-photo {
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 12px 40px rgba(0,0,0,.1);
       position: relative;
+      height: 620px;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
+    .owners-photo::-webkit-scrollbar { display: none; }
     .owners-photo img {
       width: 100%;
-      height: 520px;
+      height: 620px;
       object-fit: cover;
-      object-position: top;
+      object-position: center 20%;
       display: block;
-      transition: transform .6s cubic-bezier(.22,.68,0,1.1);
+      flex-shrink: 0;
+      scroll-snap-align: start;
     }
-    .owners-photo:hover img { transform: scale(1.04); }
+    /* Scroll hint pill */
+    .owners-scroll-hint {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 6px 14px 6px 10px;
+      font-size: .58rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark);
+      pointer-events: none;
+      animation: fadeIn 1s 1.2s ease both;
+    }
+    .owners-scroll-hint svg { opacity: .7; }
     /* Right: header + two stacked bios */
     .owners-text { display: flex; flex-direction: column; }
     .owners-text .section-title { margin-bottom: 40px; }
@@ -581,14 +609,16 @@
       .cta-band { padding-left: 32px; padding-right: 32px; }
       .staff-header { padding-left: 32px; padding-right: 32px; }
       .staff-scroll { padding-left: 32px; padding-right: 32px; }
-      .owners-inner { grid-template-columns: 320px 1fr; gap: 48px; }
-      .owners-photo img { height: 440px; }
+      .owners-inner { grid-template-columns: 380px 1fr; gap: 48px; }
+      .owners-photo { height: 500px; }
+      .owners-photo img { height: 500px; }
     }
     @media (max-width: 900px) {
       .origin-inner { grid-template-columns: 1fr; gap: 40px; }
       .origin-img-wrap img { height: 380px; }
       .owners-inner { grid-template-columns: 1fr; gap: 36px; }
-      .owners-photo img { height: 320px; }
+      .owners-photo { height: 360px; }
+      .owners-photo img { height: 360px; }
       .staff-card { flex: 0 0 360px; }
       .ldirectors-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -661,9 +691,15 @@
   <section class="owners-section">
     <div class="owners-inner">
 
-      <!-- Left: tall photo -->
+      <!-- Left: scrollable photo stack -->
       <div class="owners-photo">
-        <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="The Ostendorfs">
+        <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports on the water">
+        <img src="https://beachsports.com/wp-content/uploads/2026/02/BeachSports_RBSURF_38-scaled.jpg" alt="BeachSports surf camp">
+        <img src="https://beachsports.com/wp-content/uploads/2026/01/Tommy-Headshot.jpg" alt="Tommy Ostendorf">
+        <div class="owners-scroll-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Scroll
+        </div>
       </div>
 
       <!-- Right: header + two bios -->
