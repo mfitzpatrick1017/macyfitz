@@ -400,10 +400,10 @@
     }
 
     /* ─────────────────────────────────────
-       LOCATION DIRECTORS — MASONRY WALL
+       LOCATION DIRECTORS
     ───────────────────────────────────── */
     .ldirectors-section {
-      background: var(--dark);
+      background: #1c1414;
       padding: 90px 48px 100px;
     }
     .ldirectors-inner {
@@ -440,13 +440,10 @@
     .ldir-card {
       border-radius: 16px;
       overflow: hidden;
-      background: rgba(0,0,0,.12);
-      border: 1px solid rgba(255,255,255,.12);
+      background: #2a1e1e;
       opacity: 0;
       animation: fadeUp .5s ease forwards;
-      transition: transform .35s cubic-bezier(.22,.68,0,1.2),
-                  box-shadow .35s,
-                  border-color .3s;
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
     }
     .ldir-card:nth-child(1) { animation-delay: .04s; }
     .ldir-card:nth-child(2) { animation-delay: .08s; }
@@ -458,10 +455,19 @@
     .ldir-card:nth-child(8) { animation-delay: .32s; }
     .ldir-card:nth-child(9) { animation-delay: .36s; }
     .ldir-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 44px rgba(0,0,0,.6);
-      border-color: rgba(255,255,255,.18);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 52px rgba(0,0,0,.7);
     }
+
+    /* Cycling top accent bar: green → gold → orange */
+    .ldir-card::before {
+      content: '';
+      display: block;
+      height: 3px;
+    }
+    .ldir-card:nth-child(3n+1)::before { background: var(--green); }
+    .ldir-card:nth-child(3n+2)::before { background: var(--gold); }
+    .ldir-card:nth-child(3n)::before   { background: var(--orange); }
 
     .ldir-photo {
       position: relative;
@@ -481,7 +487,7 @@
     .ldir-photo::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(110,96,96,.6) 0%, transparent 45%);
+      background: linear-gradient(to top, rgba(42,30,30,.75) 0%, transparent 50%);
       pointer-events: none;
     }
 
@@ -493,17 +499,17 @@
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
-      background: rgba(110,96,96,.7);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(251,172,43,.22);
       padding: 3px 10px;
       border-radius: 50px;
+      backdrop-filter: blur(6px);
     }
+    .ldir-card:nth-child(3n+1) .ldir-location-badge { color: var(--green);  background: rgba(16,180,138,.18);  border: 1px solid rgba(16,180,138,.35); }
+    .ldir-card:nth-child(3n+2) .ldir-location-badge { color: var(--gold);   background: rgba(251,172,43,.15);  border: 1px solid rgba(251,172,43,.32); }
+    .ldir-card:nth-child(3n)   .ldir-location-badge { color: var(--orange); background: rgba(243,119,48,.15);  border: 1px solid rgba(243,119,48,.32); }
 
     .ldir-info {
-      padding: 18px 20px 20px;
-      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 18px 20px 22px;
+      border-top: 1px solid rgba(255,255,255,.05);
     }
     .ldir-name {
       font-size: 1rem;
@@ -512,20 +518,23 @@
       text-transform: uppercase;
       color: #fff;
       line-height: 1.1;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
     .ldir-role {
       font-size: .55rem;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--green);
       margin-bottom: 10px;
     }
+    .ldir-card:nth-child(3n+1) .ldir-role { color: var(--green); }
+    .ldir-card:nth-child(3n+2) .ldir-role { color: var(--gold); }
+    .ldir-card:nth-child(3n)   .ldir-role { color: var(--orange); }
+
     .ldir-snippet {
       font-size: .82rem;
       line-height: 1.65;
-      color: rgba(255,255,255,.5);
+      color: rgba(255,255,255,.55);
       margin-bottom: 12px;
     }
     .pill-row { display: flex; flex-wrap: wrap; gap: 5px; }
@@ -536,10 +545,10 @@
       text-transform: uppercase;
       padding: 3px 9px;
       border-radius: 50px;
-      border: 1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.5);
-      background: rgba(255,255,255,.05);
     }
+    .ldir-card:nth-child(3n+1) .pill { color: var(--green);  background: rgba(16,180,138,.12);  border: 1px solid rgba(16,180,138,.28); }
+    .ldir-card:nth-child(3n+2) .pill { color: var(--gold);   background: rgba(251,172,43,.12);  border: 1px solid rgba(251,172,43,.28); }
+    .ldir-card:nth-child(3n)   .pill { color: var(--orange); background: rgba(243,119,48,.12);  border: 1px solid rgba(243,119,48,.28); }
 
     /* ─────────────────────────────────────
        FOOTER CTA BAND
@@ -609,14 +618,12 @@
       .staff-scroll { padding-left: 32px; padding-right: 32px; }
       .owners-inner { grid-template-columns: 380px 1fr; gap: 48px; }
       .owners-photo { height: 500px; }
-      .owners-photo img { height: 500px; }
     }
     @media (max-width: 900px) {
       .origin-inner { grid-template-columns: 1fr; gap: 40px; }
       .origin-img-wrap img { height: 380px; }
       .owners-inner { grid-template-columns: 1fr; gap: 36px; }
       .owners-photo { height: 360px; }
-      .owners-photo img { height: 360px; }
       .staff-card { flex: 0 0 360px; }
       .ldirectors-grid { grid-template-columns: repeat(2, 1fr); }
     }
