@@ -579,99 +579,93 @@
        RESPONSIVE
     ───────────────────────────────────── */
     /* ─────────────────────────────────────
-       JOURNEY TIMELINE  (horizontal hanging)
+       JOURNEY TIMELINE
     ───────────────────────────────────── */
     .journey-section {
       background: var(--off);
       padding: 80px 0 100px;
-      overflow: hidden;
     }
-    .journey-wrap {
-      max-width: none;
-    }
-    /* Scrollable track */
+    /* Scrollable flex row — the track IS the flex container */
     .journey-track {
+      display: flex;
+      align-items: flex-start;
       overflow-x: auto;
       scrollbar-width: none;
       padding: 0 56px 48px;
+      gap: 0;
     }
     .journey-track::-webkit-scrollbar { display: none; }
-    /* Flex row — steps butt up against each other so bar segments connect */
-    .journey-inner {
-      display: inline-flex;
-      align-items: flex-start;
-    }
-    /* Each step */
+    /* Each step — fixed width, flex column */
     .journey-step {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 280px;
+      width: 270px;
       flex-shrink: 0;
     }
-    /* Age label zone */
+    /* Age label above bar */
     .js-top {
-      height: 60px;
+      height: 56px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
+      width: 100%;
     }
     .js-age-label {
-      font-size: .52rem;
+      font-size: .5rem;
       font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--text);
-      opacity: .5;
-      line-height: 1;
+      opacity: .45;
       margin-bottom: 1px;
     }
     .js-age {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 900;
       color: var(--dark);
       line-height: 1;
       letter-spacing: -1px;
     }
-    /* Bar row — each step contributes its segment; together they form a continuous bar */
+    /* Bar row — forms one continuous stripe across all steps */
     .js-bar-row {
       width: 100%;
-      height: 10px;
+      height: 8px;
       background: var(--green);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
-    /* Dot sits on the bar, in normal flow */
     .js-dot {
-      width: 22px; height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: var(--green);
-      border: 5px solid var(--off);
-      box-shadow: 0 0 0 2.5px var(--green);
+      border: 4px solid var(--off);
+      box-shadow: 0 0 0 2px var(--green);
       flex-shrink: 0;
     }
-    /* Dashed drop line */
+    /* Dashed line dropping from bar to photo */
     .js-line {
       width: 2px;
       flex-shrink: 0;
       background: repeating-linear-gradient(
         to bottom,
-        var(--green) 0, var(--green) 6px,
-        transparent 6px, transparent 13px
+        var(--green) 0, var(--green) 5px,
+        transparent 5px, transparent 11px
       );
     }
-    .js-near .js-line { height: 44px; }
-    .js-far  .js-line { height: 110px; }
-    /* Image */
+    .js-near .js-line { height: 40px; }
+    .js-far  .js-line { height: 100px; }
+    /* Photo */
     .js-img {
-      width: 256px;
-      border-radius: 16px;
+      width: 250px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,.16);
+      box-shadow: 0 12px 40px rgba(0,0,0,.15);
       line-height: 0;
       flex-shrink: 0;
     }
@@ -680,30 +674,30 @@
       aspect-ratio: 3/4;
       object-fit: cover;
       display: block;
-      transition: transform .6s cubic-bezier(.22,.68,0,1.1);
+      transition: transform .55s cubic-bezier(.22,.68,0,1.1);
     }
     .js-img:hover img { transform: scale(1.04); }
-    /* Content below image */
+    /* Text below photo */
     .js-content {
-      width: 256px;
-      padding: 18px 8px 0;
+      width: 250px;
+      padding: 16px 6px 0;
       text-align: center;
     }
     .js-title {
-      font-size: 1rem;
+      font-size: .95rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -.2px;
       line-height: 1.1;
       color: var(--dark);
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
     .js-title em         { font-style: italic; color: var(--green); }
     .js-title .em-orange { font-style: italic; color: var(--orange); }
     .js-title .em-gold   { font-style: italic; color: #9a6b00; }
     .js-desc {
-      font-size: .88rem;
-      line-height: 1.72;
+      font-size: .85rem;
+      line-height: 1.7;
       color: var(--text);
       margin-bottom: 10px;
     }
@@ -715,17 +709,17 @@
       justify-content: center;
     }
     .js-tag {
-      font-size: .58rem;
+      font-size: .57rem;
       font-weight: 700;
-      letter-spacing: .7px;
+      letter-spacing: .6px;
       text-transform: uppercase;
       color: var(--green);
-      border: 1px solid rgba(16,180,138,.35);
+      border: 1px solid rgba(16,180,138,.3);
       padding: 2px 8px;
       border-radius: 4px;
     }
-    .js-tag.orange { color: var(--orange); border-color: rgba(243,119,48,.35); }
-    .js-tag.gold   { color: #8a5f00;       border-color: rgba(251,172,43,.4); }
+    .js-tag.orange { color: var(--orange); border-color: rgba(243,119,48,.3); }
+    .js-tag.gold   { color: #8a5f00;       border-color: rgba(251,172,43,.35); }
 
     @media (max-width: 1100px) {
       .origin-section,
@@ -736,7 +730,6 @@
       .staff-scroll { padding-left: 32px; padding-right: 32px; }
       .owners-inner { grid-template-columns: 360px 1fr; gap: 48px; }
       .owners-photo { height: 500px; }
-      .journey-wrap { padding: 0 32px; }
     }
     @media (max-width: 900px) {
       .origin-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -745,9 +738,9 @@
       .owners-photo { height: 360px; }
       .staff-card { flex: 0 0 360px; }
       .ldirectors-grid { grid-template-columns: repeat(2, 1fr); }
-      .journey-step { width: 230px; }
-      .js-img { width: 210px; }
-      .js-content { width: 210px; }
+      .journey-step { width: 220px; }
+      .js-img { width: 204px; }
+      .js-content { width: 204px; }
     }
     @media (max-width: 640px) {
       .origin-section,
@@ -759,13 +752,12 @@
       .staff-card { flex: 0 0 calc(100vw - 40px); }
       .hero-h1 { letter-spacing: -2px; }
       .ldirectors-grid { grid-template-columns: 1fr; }
-      .journey-wrap { padding: 0 0; }
-      .journey-section { padding: 72px 0 80px; }
+      .journey-section { padding: 60px 0 80px; }
       .journey-track { padding: 0 20px 40px; }
-      .journey-step { width: 190px; }
-      .js-img { width: 174px; }
-      .js-content { width: 174px; }
-      .js-age { font-size: 1.15rem; }
+      .journey-step { width: 186px; }
+      .js-img { width: 172px; }
+      .js-content { width: 172px; }
+      .js-age { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -1100,10 +1092,7 @@
        JOURNEY TIMELINE
   ═══════════════════════════════════════ -->
   <section class="journey-section">
-    <div class="journey-wrap">
-
-      <div class="journey-track">
-        <div class="journey-inner">
+    <div class="journey-track">
 
           <!-- AGE 4–6 · near -->
           <div class="journey-step js-near">
@@ -1251,9 +1240,7 @@
             </div>
           </div>
 
-        </div><!-- /.journey-inner -->
-      </div><!-- /.journey-track -->
-    </div><!-- /.journey-wrap -->
+    </div><!-- /.journey-track -->
   </section>
 
   <!-- ═══════════════════════════════════════
