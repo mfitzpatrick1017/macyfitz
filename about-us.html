@@ -585,54 +585,52 @@
       background: var(--off);
       padding: 80px 0 100px;
     }
-    /* Scrollable flex row — the track IS the flex container */
     .journey-track {
       display: flex;
       align-items: flex-start;
       overflow-x: auto;
       scrollbar-width: none;
       padding: 0 56px 48px;
-      gap: 0;
     }
     .journey-track::-webkit-scrollbar { display: none; }
-    /* Each step — fixed width, flex column */
+    /* Each card — identical structure, no alternating */
     .journey-step {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 270px;
+      width: 260px;
       flex-shrink: 0;
     }
-    /* Age label above bar */
+    /* Age label sits above the bar */
     .js-top {
-      height: 56px;
+      height: 52px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       width: 100%;
     }
     .js-age-label {
-      font-size: .5rem;
+      font-size: .48rem;
       font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--text);
-      opacity: .45;
+      opacity: .4;
       margin-bottom: 1px;
     }
     .js-age {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 900;
       color: var(--dark);
       line-height: 1;
       letter-spacing: -1px;
     }
-    /* Bar row — forms one continuous stripe across all steps */
+    /* Continuous green bar with centred dot */
     .js-bar-row {
       width: 100%;
-      height: 8px;
+      height: 6px;
       background: var(--green);
       display: flex;
       align-items: center;
@@ -640,34 +638,23 @@
       flex-shrink: 0;
     }
     .js-dot {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: var(--green);
-      border: 4px solid var(--off);
+      border: 3px solid var(--off);
       box-shadow: 0 0 0 2px var(--green);
       flex-shrink: 0;
     }
-    /* Dashed line dropping from bar to photo */
-    .js-line {
-      width: 2px;
-      flex-shrink: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        var(--green) 0, var(--green) 5px,
-        transparent 5px, transparent 11px
-      );
-    }
-    .js-near .js-line { height: 40px; }
-    .js-far  .js-line { height: 100px; }
-    /* Photo */
+    /* Photo — same gap below bar for every step */
     .js-img {
-      width: 250px;
+      width: 240px;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,.15);
+      box-shadow: 0 10px 36px rgba(0,0,0,.14);
       line-height: 0;
       flex-shrink: 0;
+      margin-top: 20px;
     }
     .js-img img {
       width: 100%;
@@ -679,12 +666,12 @@
     .js-img:hover img { transform: scale(1.04); }
     /* Text below photo */
     .js-content {
-      width: 250px;
+      width: 240px;
       padding: 16px 6px 0;
       text-align: center;
     }
     .js-title {
-      font-size: .95rem;
+      font-size: .9rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -.2px;
@@ -696,7 +683,7 @@
     .js-title .em-orange { font-style: italic; color: var(--orange); }
     .js-title .em-gold   { font-style: italic; color: #9a6b00; }
     .js-desc {
-      font-size: .85rem;
+      font-size: .82rem;
       line-height: 1.7;
       color: var(--text);
       margin-bottom: 10px;
@@ -709,7 +696,7 @@
       justify-content: center;
     }
     .js-tag {
-      font-size: .57rem;
+      font-size: .55rem;
       font-weight: 700;
       letter-spacing: .6px;
       text-transform: uppercase;
@@ -1095,14 +1082,12 @@
     <div class="journey-track">
 
           <!-- AGE 4–6 · near -->
-          <div class="journey-step js-near">
+          <div class="journey-step">
             <div class="js-top">
               <span class="js-age-label">Age</span>
               <span class="js-age">4–6</span>
             </div>
-            <div class="js-bar-row"><div class="js-dot"></div></div>
-            <div class="js-line"></div>
-            <div class="js-img">
+            <div class="js-bar-row"><div class="js-dot"></div></div>            <div class="js-img">
               <img src="https://beachsports.com/wp-content/uploads/2026/01/Smiles-Boogie-Boarding-scaled.jpg" alt="Young kids discovering the beach">
             </div>
             <div class="js-content">
@@ -1117,14 +1102,12 @@
           </div>
 
           <!-- AGE 7–8 · far -->
-          <div class="journey-step js-far">
+          <div class="journey-step">
             <div class="js-top">
               <span class="js-age-label">Age</span>
               <span class="js-age">7–8</span>
             </div>
-            <div class="js-bar-row"><div class="js-dot"></div></div>
-            <div class="js-line"></div>
-            <div class="js-img">
+            <div class="js-bar-row"><div class="js-dot"></div></div>            <div class="js-img">
               <img src="https://beachsports.com/wp-content/uploads/2026/01/Ocean.jpg" alt="Kids learning ocean safety">
             </div>
             <div class="js-content">
@@ -1139,14 +1122,12 @@
           </div>
 
           <!-- AGE 7–13 · near -->
-          <div class="journey-step js-near">
+          <div class="journey-step">
             <div class="js-top">
               <span class="js-age-label">Age</span>
               <span class="js-age">7–13</span>
             </div>
-            <div class="js-bar-row"><div class="js-dot"></div></div>
-            <div class="js-line"></div>
-            <div class="js-img">
+            <div class="js-bar-row"><div class="js-dot"></div></div>            <div class="js-img">
               <img src="https://beachsports.com/wp-content/uploads/2026/03/9R5A4058-1-scaled.jpg" alt="Kids surfing and playing volleyball">
             </div>
             <div class="js-content">
@@ -1161,14 +1142,12 @@
           </div>
 
           <!-- AGE 14–15 · far -->
-          <div class="journey-step js-far">
+          <div class="journey-step">
             <div class="js-top">
               <span class="js-age-label">Age</span>
               <span class="js-age">14–15</span>
             </div>
-            <div class="js-bar-row"><div class="js-dot"></div></div>
-            <div class="js-line"></div>
-            <div class="js-img">
+            <div class="js-bar-row"><div class="js-dot"></div></div>            <div class="js-img">
               <img src="https://beachsports.com/wp-content/uploads/2024/11/Coach-In-training.jpg" alt="Coach-in-Training teens">
             </div>
             <div class="js-content">
@@ -1181,14 +1160,12 @@
           </div>
 
           <!-- AGE 16–17 · near -->
-          <div class="journey-step js-near">
+          <div class="journey-step">
             <div class="js-top">
               <span class="js-age-label">Age</span>
               <span class="js-age">16–17</span>
             </div>
-            <div class="js-bar-row"><div class="js-dot"></div></div>
-            <div class="js-line"></div>
-            <div class="js-img">
+            <div class="js-bar-row"><div class="js-dot"></div></div>            <div class="js-img">
               <img src="https://beachsports.com/wp-content/uploads/2024/11/BEACH-Slider-HB.jpg" alt="Teen coaches at BeachSports">
             </div>
             <div class="js-content">
@@ -1201,14 +1178,12 @@
           </div>
 
           <!-- AGE 18–21+ · far -->
-          <div class="journey-step js-far">
+          <div class="journey-step">
             <div class="js-top">
               <span class="js-age-label">Age</span>
               <span class="js-age">18–21+</span>
             </div>
-            <div class="js-bar-row"><div class="js-dot"></div></div>
-            <div class="js-line"></div>
-            <div class="js-img">
+            <div class="js-bar-row"><div class="js-dot"></div></div>            <div class="js-img">
               <img src="https://beachsports.com/wp-content/uploads/2026/02/Untitled-design-30.png" alt="BeachSports leadership team">
             </div>
             <div class="js-content">
@@ -1221,14 +1196,12 @@
           </div>
 
           <!-- BEYOND · near -->
-          <div class="journey-step js-near js-beyond">
+          <div class="journey-step">
             <div class="js-top">
               <span class="js-age-label">Age</span>
               <span class="js-age">∞</span>
             </div>
-            <div class="js-bar-row"><div class="js-dot"></div></div>
-            <div class="js-line"></div>
-            <div class="js-img">
+            <div class="js-bar-row"><div class="js-dot"></div></div>            <div class="js-img">
               <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="Beyond the Beach">
             </div>
             <div class="js-content">
