@@ -207,11 +207,11 @@
       padding: 60px 56px 72px;
     }
     .owners-inner {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 400px 1fr;
-      gap: 64px;
+      grid-template-columns: 460px 1fr;
+      gap: 72px;
       align-items: center;
     }
     /* Center photo */
@@ -259,9 +259,6 @@
       flex-direction: column;
       justify-content: center;
     }
-    .owners-text-tommy { text-align: right; align-items: flex-end; }
-    .owners-text-tommy .tag-row { justify-content: flex-end; }
-    .owners-text-libby { text-align: left; align-items: flex-start; }
     .owner-name {
       font-size: 1.15rem;
       font-weight: 900;
@@ -634,15 +631,15 @@
       align-items: flex-start;
       min-width: max-content;
       position: relative;
-      padding: 72px 56px 0;
+      padding: 94px 56px 0;
     }
     /* Green bar spanning the row */
     .journey-inner::before {
       content: '';
       position: absolute;
-      top: 56px;
+      top: 73px;
       left: 0; right: 0;
-      height: 8px;
+      height: 10px;
       background: var(--green);
       border-radius: 4px;
     }
@@ -651,20 +648,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      flex: 0 0 220px;
+      flex: 0 0 286px;
       position: relative;
     }
     /* Age label sits above the bar */
     .js-top {
-      height: 56px;
+      height: 73px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      padding-bottom: 14px;
+      padding-bottom: 18px;
     }
     .js-age-label {
-      font-size: .45rem;
+      font-size: .58rem;
       font-weight: 800;
       letter-spacing: 3.5px;
       text-transform: uppercase;
@@ -674,7 +671,7 @@
       margin-bottom: 2px;
     }
     .js-age {
-      font-size: 1.15rem;
+      font-size: 1.5rem;
       font-weight: 900;
       color: var(--dark);
       line-height: 1;
@@ -682,13 +679,13 @@
     }
     /* Dot on the bar */
     .js-dot {
-      width: 18px; height: 18px;
+      width: 23px; height: 23px;
       border-radius: 50%;
       background: var(--green);
-      border: 4px solid var(--off);
+      border: 5px solid var(--off);
       box-shadow: 0 0 0 2.5px var(--green);
       position: absolute;
-      top: 48px;
+      top: 62px;
       z-index: 2;
     }
     /* Dashed line from bar to image */
@@ -701,14 +698,14 @@
       );
     }
     /* Height variants — creates stagger effect */
-    .js-near .js-line { height: 36px; }
-    .js-far  .js-line { height: 96px; }
+    .js-near .js-line { height: 47px; }
+    .js-far  .js-line { height: 125px; }
     /* Prominent photo */
     .js-img {
-      width: 196px;
-      border-radius: 14px;
+      width: 255px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 14px 44px rgba(0,0,0,.18);
+      box-shadow: 0 16px 52px rgba(0,0,0,.18);
       line-height: 0;
       flex-shrink: 0;
     }
@@ -722,47 +719,47 @@
     .js-img:hover img { transform: scale(1.04); }
     /* Content below image */
     .js-content {
-      width: 196px;
-      padding: 16px 4px 0;
+      width: 255px;
+      padding: 20px 6px 0;
       text-align: center;
     }
     .js-title {
-      font-size: .85rem;
+      font-size: 1.05rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -.3px;
       line-height: 1.1;
       color: var(--dark);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .js-title em         { font-style: italic; color: var(--green); }
     .js-title .em-orange { font-style: italic; color: var(--orange); }
     .js-title .em-gold   { font-style: italic; color: #9a6b00; }
     .js-desc {
-      font-size: .78rem;
+      font-size: .9rem;
       line-height: 1.7;
       color: var(--text);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .js-desc strong { font-weight: 800; color: var(--dark); }
     .js-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
+      gap: 4px;
       justify-content: center;
     }
     .js-tag {
       font-size: .6rem;
       font-weight: 700;
-      letter-spacing: .3px;
+      letter-spacing: .8px;
       text-transform: uppercase;
       color: var(--green);
-      background: rgba(16,180,138,.1);
-      padding: 3px 10px;
-      border-radius: 50px;
+      border: 1px solid rgba(16,180,138,.35);
+      padding: 3px 9px;
+      border-radius: 4px;
     }
-    .js-tag.orange { color: var(--orange); background: rgba(243,119,48,.1); }
-    .js-tag.gold   { color: #8a5f00;       background: rgba(251,172,43,.13); }
+    .js-tag.orange { color: var(--orange); border-color: rgba(243,119,48,.35); }
+    .js-tag.gold   { color: #8a5f00;       border-color: rgba(251,172,43,.4); }
     /* Beyond step — no image, card replaces photo */
     .js-beyond .js-img {
       background: var(--green);
@@ -770,8 +767,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 28px 20px;
-      box-shadow: 0 14px 44px rgba(16,180,138,.35);
+      padding: 36px 24px;
+      box-shadow: 0 16px 52px rgba(16,180,138,.35);
       aspect-ratio: 3/4;
     }
     .js-beyond .js-img img { display: none; }
@@ -779,10 +776,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .js-beyond-sym {
-      font-size: 3rem;
+      font-size: 3.9rem;
       font-weight: 900;
       color: #fff;
       line-height: 1;
@@ -803,8 +800,8 @@
       .cta-band { padding-left: 32px; padding-right: 32px; }
       .staff-header { padding-left: 32px; padding-right: 32px; }
       .staff-scroll { padding-left: 32px; padding-right: 32px; }
-      .owners-inner { grid-template-columns: 1fr 320px 1fr; gap: 40px; }
-      .owners-photo { height: 460px; }
+      .owners-inner { grid-template-columns: 360px 1fr; gap: 48px; }
+      .owners-photo { height: 500px; }
       .journey-wrap { padding: 0 32px; }
     }
     @media (max-width: 900px) {
@@ -812,15 +809,13 @@
       .origin-img-wrap img { height: 380px; }
       .owners-inner { grid-template-columns: 1fr; gap: 32px; }
       .owners-photo { height: 360px; }
-      .owners-text-tommy { text-align: left; align-items: flex-start; }
-      .owners-text-tommy .tag-row { justify-content: flex-start; }
       .staff-card { flex: 0 0 360px; }
       .ldirectors-grid { grid-template-columns: repeat(2, 1fr); }
       /* horizontal timeline stays scrollable — just tweak padding */
-      .journey-inner { padding: 64px 32px 0; }
-      .journey-step { flex: 0 0 180px; }
-      .js-img { width: 164px; }
-      .js-content { width: 164px; }
+      .journey-inner { padding: 84px 32px 0; }
+      .journey-step { flex: 0 0 234px; }
+      .js-img { width: 213px; }
+      .js-content { width: 213px; }
     }
     @media (max-width: 640px) {
       .origin-section,
@@ -834,10 +829,10 @@
       .ldirectors-grid { grid-template-columns: 1fr; }
       .journey-wrap { padding: 0 0; }
       .journey-section { padding: 72px 0 80px; }
-      .journey-inner { padding: 56px 20px 0; }
-      .journey-step { flex: 0 0 160px; }
-      .js-img { width: 148px; }
-      .js-content { width: 148px; }
+      .journey-inner { padding: 73px 20px 0; }
+      .journey-step { flex: 0 0 208px; }
+      .js-img { width: 192px; }
+      .js-content { width: 192px; }
       .js-r .js-band, .js-l .js-band { min-height: 80px; }
       .js-age { font-size: 1.3rem; }
       .js-desc { max-width: 100%; }
@@ -905,18 +900,7 @@
     </div>
     <div class="owners-inner">
 
-      <!-- Left: Tommy bio -->
-      <div class="owners-text owners-text-tommy">
-        <div class="owner-name">Tommy Ostendorf</div>
-        <div class="owner-role">Owner</div>
-        <p class="owner-bio">I began teaching surf lessons as a 13-year-old at the Manhattan Beach pier and have been involved in youth programs ever since. A Mira Costa graduate with a business degree from USD, where I was captain of the surf team and Collegiate National Champion in 2007.</p>
-        <div class="tag-row">
-          <span class="tag">🏄 2007 Collegiate Champ</span>
-          <span class="tag">🌊 30+ Years Ocean Experience</span>
-        </div>
-      </div>
-
-      <!-- Center: dot carousel -->
+      <!-- Left: dot carousel -->
       <div class="owners-photo">
         <div class="owners-photo-track" id="ownerTrack">
           <img src="https://beachsports.com/wp-content/uploads/2026/01/2Q7A4934KomickKaptures-BS-7_13_23--scaled.jpg" alt="BeachSports on the water">
@@ -930,14 +914,24 @@
         </div>
       </div>
 
-      <!-- Right: Libby bio -->
-      <div class="owners-text owners-text-libby">
-        <div class="owner-name">Libby Ostendorf</div>
-        <div class="owner-role">Co-Owner &amp; Arena House Director</div>
-        <p class="owner-bio">Libby manages Arena House and handles the operations that keep BeachSports running seamlessly. As a mother of three, she brings a parent's perspective to everything we do — ensuring programs feel safe, welcoming, and thoughtfully designed for families.</p>
-        <div class="tag-row">
-          <span class="tag">🏢 Arena House Director</span>
-          <span class="tag">💼 Operations</span>
+      <!-- Right: Tommy + Libby stacked -->
+      <div class="owners-text">
+        <div class="owner-name">Tommy Ostendorf</div>
+        <div class="owner-role">Owner</div>
+        <p class="owner-bio">I began teaching surf lessons as a 13-year-old at the Manhattan Beach pier and have been involved in youth programs ever since. A Mira Costa graduate with a business degree from USD, where I was captain of the surf team and Collegiate National Champion in 2007.</p>
+        <div class="tag-row" style="margin-bottom: 36px;">
+          <span class="tag">🏄 2007 Collegiate Champ</span>
+          <span class="tag">🌊 30+ Years Ocean Experience</span>
+        </div>
+
+        <div style="border-top: 1px solid var(--offb); padding-top: 32px;">
+          <div class="owner-name">Libby Ostendorf</div>
+          <div class="owner-role">Co-Owner &amp; Arena House Director</div>
+          <p class="owner-bio">Libby manages Arena House and handles the operations that keep BeachSports running seamlessly. As a mother of three, she brings a parent's perspective to everything we do — ensuring programs feel safe, welcoming, and thoughtfully designed for families.</p>
+          <div class="tag-row">
+            <span class="tag">🏢 Arena House Director</span>
+            <span class="tag">💼 Operations</span>
+          </div>
         </div>
       </div>
 
